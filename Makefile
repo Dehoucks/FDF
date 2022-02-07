@@ -6,7 +6,7 @@
 #    By: robindehouck <robindehouck@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 17:44:48 by robindehouc       #+#    #+#              #
-#    Updated: 2022/02/05 18:40:23 by robindehouc      ###   ########.fr        #
+#    Updated: 2022/02/07 22:49:13 by robindehouc      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@ RESET		= "\033[0m"
 
 # src / obj files
 SRC			= 	main.c \
-
+				get_next_line_utils.c \
+				get_next_line.c \
+				struct.c \
+				
 OBJ			= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 # compiler

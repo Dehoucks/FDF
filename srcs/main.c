@@ -6,29 +6,12 @@
 /*   By: robindehouck <robindehouck@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 19:48:52 by robindehouc       #+#    #+#             */
-/*   Updated: 2022/02/07 18:53:34 by robindehouc      ###   ########.fr       */
+/*   Updated: 2022/02/07 23:16:45 by robindehouc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx/mlx.h"
 #include "../includes/fdf.h"
-#include "../libft/libft.h"
 
-void	init_struct_mlx(t_param **mlx)
-{
-	(*mlx)->id = NULL;
-	(*mlx)->win = NULL;
-	(*mlx)->tab = NULL;
-	(*mlx)->height = 1600;
-	(*mlx)->width = 960;
-	(*mlx)->alt = 5;
-	(*mlx)->nb_line = 0;
-	(*mlx)->nb_col = 0;
-	(*mlx)->color = 0xFFFFFF;
-	(*mlx)->dep_x = 200;
-	(*mlx)->dep_y = 200;
-	(*mlx)->zoom = 0.5;
-}
 
 void	ft_putchar(char c)
 {
@@ -109,11 +92,20 @@ void	draw_map(t_param **mlx)
 int main()
 {
 	t_param		*mlx;
-	int		x;
-	int		y;
+	int			x;
+	int			y;
+	int			fd;
+	char		*myline;
 
 	x = 0;
 	y = 0;
+	fd = open("test_maps/42.fdf", O_RDONLY);
+	myline = get_next_line(fd);
+	while (myline)
+	{
+		printf("%s", myline);
+		myline = get_next_line(fd);
+	}
 	mlx = (t_param*)malloc(sizeof(t_param));
 	init_struct_mlx(&mlx);
 	init_mlx(&mlx);

@@ -6,7 +6,7 @@
 /*   By: robindehouck <robindehouck@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 19:53:24 by robindehouc       #+#    #+#             */
-/*   Updated: 2022/02/07 13:13:52 by robindehouc      ###   ########.fr       */
+/*   Updated: 2022/02/07 22:52:38 by robindehouc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
+# include "get_next_line.h"
+# include <sys/stat.h> 
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
+# include <stdlib.h>
 
 typedef struct		s_coord
 {
@@ -40,5 +47,12 @@ typedef struct		s_param
 	float			zoom;
 	t_coord			coord;
 }					t_param;
+
+
+void				init_struct_mlx(t_param **mlx);
+void				init_mlx(t_param **mlx);
+void				core(t_param **mlx);
+int					manage_key(int keycode, t_param **mlx);
+
 
 #endif
