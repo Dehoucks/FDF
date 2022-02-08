@@ -3,17 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: robindehouck <robindehouck@student.42.f    +#+  +:+       +#+         #
+#    By: rdehouck <rdehouck@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 17:44:48 by robindehouc       #+#    #+#              #
-#    Updated: 2022/02/07 22:49:13 by robindehouc      ###   ########.fr        #
+#    Updated: 2022/02/08 11:42:42 by rdehouck         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fdf
-
-GREEN		= "\033[32m"
-RESET		= "\033[0m"
 
 # src / obj files
 SRC			= 	main.c \

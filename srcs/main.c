@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robindehouck <robindehouck@student.42.f    +#+  +:+       +#+        */
+/*   By: rdehouck <rdehouck@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 19:48:52 by robindehouc       #+#    #+#             */
-/*   Updated: 2022/02/07 23:16:45 by robindehouc      ###   ########.fr       */
+/*   Updated: 2022/02/08 14:51:36 by rdehouck         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,45 +70,43 @@ void			core(t_param **mlx)
 	mlx_loop((*mlx)->id);
 }
 
-void	draw_map(t_param **mlx)
+void	draw_map(t_param **mlx, char *myline, int y)
 {
-	int		x;
-	int		y;
+	int	i;
+	int	zone;
 
-	x = 20;
-	y = 10;
-	while (x < 100)
+	i = 0;
+	while (myline[i])
 	{
-		y = 0;
-		while (y < 100)
+		zone = i;
+		if (myline[i] != '0')
 		{
-			mlx_pixel_put(mlx,(*mlx)->win, x, y, 0x00FFFFFF);
-			y++;
+			mlx_pixel_put(mlx,(*mlx)->win, i, y, 0x00FFFFFF);
 		}
-		x++;
+		i += 1;
 	}
 }
 
 int main()
 {
 	t_param		*mlx;
-	int			x;
 	int			y;
 	int			fd;
 	char		*myline;
 
-	x = 0;
-	y = 0;
-	fd = open("test_maps/42.fdf", O_RDONLY);
-	myline = get_next_line(fd);
-	while (myline)
-	{
-		printf("%s", myline);
-		myline = get_next_line(fd);
-	}
+
 	mlx = (t_param*)malloc(sizeof(t_param));
 	init_struct_mlx(&mlx);
 	init_mlx(&mlx);
-	draw_map(&mlx);
+	fd = open("test_maps/42.fdf", O_RDONLY);
+	myline = get_next_line(fd);
+	y = 0;
+	while (myline)
+	{
+		draw_map(&mlx, myline, y);
+		// printf("%s", myline);
+		myline = get_next_line(fd);
+		y++;
+	}
 	core(&mlx);
 }
